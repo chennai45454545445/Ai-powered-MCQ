@@ -4,6 +4,55 @@
  */
 import { GoogleGenAI, Type } from '@google/genai';
 
+import React, { useEffect, useState } from 'react';
+
+function App() {
+  const [response, setResponse] = useState('');
+
+  useEffect(() => {
+    const fetchAIResponse = async () => {
+      const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
+      const apiKey = 'YOUR_API_KEY'; // Replace with your actual API key
+      const data = {
+        contents: [
+          {
+            parts: [
+              { text: 'Explain how AI works in a few words' }
+            ]
+          }
+        ]
+      };
+
+      try {
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-goog-api-key': apiKey
+          },
+          body: JSON.stringify(data)
+        });
+        const result = await res.json();
+        setResponse(result.candidates[0].content.parts[0].text);
+      } catch (error) {
+        console.error('Error fetching AI response:', error);
+        setResponse('Failed to load response');
+      }
+    };
+
+    fetchAIResponse();
+  }, []);
+
+  return (
+    <div>
+      <h1>AI Explanation</h1>
+      <p>{response}</p>
+    </div>
+  );
+}
+
+export default App;
+
 const form = document.getElementById('mcq-form') as HTMLFormElement;
 const generateBtn = document.getElementById('generate-btn') as HTMLButtonElement;
 const btnText = generateBtn.querySelector('.btn-text') as HTMLSpanElement;
