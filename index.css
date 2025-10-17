@@ -1,0 +1,231 @@
+:root {
+  --primary-color: #6a1b9a;
+  --primary-color-dark: #4a148c;
+  --secondary-color: #f3e5f5;
+  --text-color: #333;
+  --light-gray: #f4f4f5;
+  --border-color: #e0e0e0;
+  --correct-bg: #e8f5e9;
+  --correct-border: #4caf50;
+  --incorrect-bg: #ffebee;
+  --incorrect-border: #f44336;
+  --font-family: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--light-gray);
+  color: var(--text-color);
+  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color-dark);
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+#mcq-form {
+  background-color: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2.5rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group:last-of-type {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input {
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: var(--font-family);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--secondary-color);
+}
+
+#generate-btn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: white;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 52px;
+}
+
+#generate-btn:hover:not(:disabled) {
+  background-color: var(--primary-color-dark);
+}
+
+#generate-btn:disabled {
+  background-color: #9e9e9e;
+  cursor: not-allowed;
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 4px solid #fff;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#results-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.error-message {
+  background-color: var(--incorrect-bg);
+  color: var(--incorrect-border);
+  border: 1px solid var(--incorrect-border);
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.question-card {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.question-card h3 {
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.option {
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.option.correct {
+  background-color: var(--correct-bg);
+  border-color: var(--correct-border);
+  color: var(--correct-border);
+  font-weight: 500;
+}
+
+.option.incorrect {
+    background-color: var(--incorrect-bg);
+    border-color: var(--incorrect-border);
+    color: #aeaeae;
+    text-decoration: line-through;
+}
+
+.reveal-container {
+    text-align: right;
+}
+
+.reveal-btn {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.reveal-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 1rem 0.5rem;
+  }
+  header h1 {
+    font-size: 2rem;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  #mcq-form, .question-card {
+    padding: 1.5rem;
+  }
+}

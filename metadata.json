@@ -1,0 +1,5 @@
+{
+  "name": "AI MCQ Generator",
+  "description": "Generate multiple-choice questions for any subject using AI.",
+  "requestFramePermissions": []
+}
