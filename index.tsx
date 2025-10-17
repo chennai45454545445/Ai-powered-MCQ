@@ -63,7 +63,7 @@ const resultsContainer = document.getElementById(
 const subjectInput = document.getElementById('subject') as HTMLInputElement;
 
 // Do not use the deprecated `GoogleGenerativeAI`.
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({ apiKey: process.env.AIzaSyBqhZ_kt-Qmsm-14406tKxDwhFdVrwsyDg });
 
 const mcqSchema = {
   type: Type.OBJECT,
