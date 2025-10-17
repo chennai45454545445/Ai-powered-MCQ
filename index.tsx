@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     const fetchAIResponse = async () => {
       const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
-      const apiKey = 'YOUR_API_KEY'; // Replace with your actual API key
+      const apiKey = 'AIzaSyBqhZ_kt-Qmsm-14406tKxDwhFdVrwsyDg'; // Replace with your actual API key
       const data = {
         contents: [
           {
